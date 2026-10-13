@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class Tarea011_35 {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        try {
+            System.out.print("Ingrese la cadena: ");
+            String str = reader.readLine();
+
+            System.out.println("La cadena proporcionada es: " + str);
+            System.out.println("Las cadenas permutadas son:");
+            allLexicographicRecur(str, "", str.length());
+
+        } catch (IOException e) {
+            System.out.println("Error al leer la entrada: " + e.getMessage());
+        }
+    }
+
+    static void allLexicographicRecur(String str, String out, int n) {
+        if (out.length() == n) {
+            System.out.println(out);
+            return;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            allLexicographicRecur(str, out + str.charAt(i), n);
+        }
+    }
+}
